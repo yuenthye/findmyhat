@@ -83,6 +83,17 @@ getCharacter () {
 
 }
 
+charMovement () {
+    
+    for(let q = 10; q < charDirection; q++){
+        for (let g = 10; g < charDirection; g++) {
+        this.field[this.locationX][this.locationY] = pathCharacter;
+    }
+    }
+
+}   
+
+
 
 print() {
     clear();
@@ -93,8 +104,22 @@ print() {
 }
 
 askQuestion () {
-    const answer = prompt('Which way? enter W, A, S, D: ').toUpperCase()
-    console.log(charDirection);
+    const readline = require('readline')
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+
+    rl.question = prompt('Which way? enter U, D, L, R: ').toUpperCase() 
+
+    
+    if (rl.question === 'u' || rl.question === 'd' || rl.question === 'l' || rl.question === 'r') {
+        rl.question = prompt('Which way? enter U, D, L, R: ').toUpperCase() 
+    } else {
+        rl.question = prompt('please enter U, D, L, R: ').toUpperCase() 
+    }
+
+    
 
 }
 
